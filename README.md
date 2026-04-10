@@ -1,39 +1,30 @@
-# SpriNDAX! A fully comprehensive Java, Angular, Nginx, MongoDb or MySQL Docker container.
+# Open Hit Game
 
 ## Introduction
-The repo provides a complete Angular, Spring, Nginx and MongoDb or MySQL environment in Docker.
-SpriNDAX stands for:
+Just a game, which works like Hitstar, but with songs from video games. I use:
 
-- **Spri**ng
-- **N**ginx
-- **D**ocker
-- **A**ngular
-- **X** is a variable and stands for the database MongoDb or MySQL
+- Spring
+- Nginx
+- Docker
+- Angular
+- PostgreSQL
 
 Feel free to use the repo. I always try to keep the repo up to date.
-Please bear with me as I don't have much experience with Git and Docker yet.
+Please bear with me, it is just a hobby project.
 
 The installation works for Linux. I do not know, if the installation works for the Windows subsystem.
 You are welcome to clone the repo and run it in Windows. I will gladly extend the description with a Windows chapter.
 
-## Preconditions
-
-### Check docker version
-Make sure which Docker version you are using. make sure which Docker version you are using.
-If your version is greater than 2.0, then start the containers with `docker compose up <parameters>`.
-
-If it is smaller than 2.0, then the command goes as follows: `docker-compose up <parameters>`. **Note the hyphen!**
-
 ## 1. Installation
 
 ### 1.1 Clone the project
-`git clone https://github.com/One-Type-Man/SpriNDReX.git`
+`git clone https://github.com/Ninosaurier/open-hit-game.git`
 
 ### 1.2 Go in the project folder
-`cd SpriNDAX`
+`cd open-hit-game.git`
 
 ### 1.3 Build the docker image:
-`docker-compose build` or `docker compose build`.
+`docker compose build`.
 
 ### 1.4 Start the containers
 But before you start the containers, the line "command: ng serve frontend --host 0.0.0.0 --port 4200" in the _docker-compose.yml_, is commented out. This is **important for the beginning**, otherwise the _Angular container_ will *not start*!
@@ -46,10 +37,10 @@ With `docker ps` you will have the following output:
 > $ docker-compose ps
         Image ...     Ports                                                Names
 --------------------------------------------------------------------------------------------------
-sprindax_angular      0.0.0.0:3000->3000/tcp, :::4200->4200/tcp            angular
-sprindax_nginx        0.0.0.0:80->80/tcp, :::80->80/tcp, 9001/tcp          nginx
-sprindax_spring       0.0.0.0:8080->8080/tcp, :::8080->8080/tcp            spring
-mongo                 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp, 27017/tcp mongo_database
+open-hit-game_angular      0.0.0.0:4200->4200/tcp, :::4200->4200/tcp    angular
+open-hit-game_nginx        0.0.0.0:80->80/tcp, :::80->80/tcp, 443/tcp   nginx
+open-hit-game_spring       0.0.0.0:8080->8080/tcp, :::8080->8080/tcp    spring
+postgres:alpine            0.0.0.0:5432->5432/tcp, :::5432->5432/tcp    postgres_database
 ```
 
 ### 1.5 Initialize the Angular project.
@@ -58,13 +49,6 @@ Now, create the Angular project with following command:
 - `docker exec -it angular sh /usr/share/scripts/initAngularProject.sh`
 
 The working directory is declared as **:cached**, so you will find (after restarting all container in chapter 1.7) the new initialized project in **./workdir/frontend/**.
-
-Afterwards, please add following configuration in the angular.json:
-```json
-"options": {
-"allowedHosts": ["angular", "angular.localhost", "localhost"]
-},
-```
 
 ### 1.6 Get the Spring boot application
 1. Go to [Spring initializr](https://start.spring.io/).
@@ -75,6 +59,7 @@ Afterwards, please add following configuration in the angular.json:
 6. Go to dependencies and add:
     - Spring Boot DevTools
     - Spring Web
+    - Lombock
 7. Generate and download it
 8. Unzip the file
 9. Copy all files in the folder in the project **workDir/backend/**

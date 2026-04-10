@@ -67,9 +67,6 @@
               "buildTarget": "frontend:build:development"
             }
           },
-          "options": {
-            "allowedHosts": ["angular", "angular.localhost", "localhost"]
-          },
           "defaultConfiguration": "development"
         },
         "test": {

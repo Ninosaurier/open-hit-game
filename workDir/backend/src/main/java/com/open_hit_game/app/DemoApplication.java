@@ -1,13 +1,13 @@
-package com.example.cms;
+package com.open_hit_game.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CmsApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CmsApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }

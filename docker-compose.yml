@@ -25,32 +25,19 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - MySQLDB
-# MongoDB:
-  #   image: mongo
-  #   container_name: mongo_database
-  #   ports:
-  #     - "8081:8081"
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: root
-  #     MONGO_INITDB_ROOT_PASSWORD: p
-  #     MONGO_INITDB_DATABASE: mongoDb
-  #   volumes:
-  #     - /var/lib/mongodb/
-  #   networks:
-  #     - network_infrastructure
-  MySQLDB:
-    image: mysql
-    container_name: mysql_database
+      - db
+  db:
+    image: postgres:alpine
+    container_name: postgres_database
+    shm_size: 128mb
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      MYSQL_ROOT_PASSWORD: p
-      MYSQL_DATABASE: mysqlDb
-      MYSQL_USER: mysqlDbUser
-      MYSQL_PASSWORD: p
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: dbUser
+      POSTGRES_DB: ohg
     volumes:
-      - /var/lib/mysql/
+      - /var/lib/postgresql/
     networks:
       - network_infrastructure
   nginx:
