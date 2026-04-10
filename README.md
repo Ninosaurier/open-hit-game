@@ -71,10 +71,6 @@ Start the containers with `docker compose up -d`.
 Open your browser and make sure everything worked.
 The Angular container can be accessed via the URL `http://angular.localhost` and the Spring container via `http://spring.localhost`.
 
-### 1.9 Do you need MySQL? Edit the docker-compose.yml
-If you need MySQl, comment out the section after "db", and enable the lines needed for the MySQL container.
-In the Spring section, you would then also have to activate the correct lines under "links". Of course you can also create a MongoDB and MySQL container.
-
 ### Nginx logs
 The logs are cached and you will find them in project folder _workDir/logs_.
 
