@@ -50,6 +50,17 @@ Now, create the Angular project with following command:
 
 The working directory is declared as **:cached**, so you will find (after restarting all container in chapter 1.7) the new initialized project in **./workdir/frontend/**.
 
+Afterwards, please add following configuration in the angular.json:
+```json
+{
+  "serve": {
+    "options": {
+      "allowedHosts": ["angular"]
+    }
+  }
+}
+```
+
 ### 1.6 Get the Spring boot application
 1. Go to [Spring initializr](https://start.spring.io/).
 2. Set the project on **Maven** and language on **Java**
