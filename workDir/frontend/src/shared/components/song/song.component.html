@@ -1,0 +1,9 @@
+<button (click)="loadSong()">Neuen Song</button>
+
+@if (song) {
+	<p><b>{{song.title}}</b></p>
+	<p>{{song.game}}</p>
+	<p>{{song.year}}</p>
+} @else {
+  <p>no song</p>
+}

@@ -1,1 +1,3 @@
-com/open_hit_game/app/DemoApplication.class
+com/open_hit_game/app/controller/SongController.class
+com/open_hit_game/app/OpenHitGameApplication.class
+com/open_hit_game/app/model/Song.class
