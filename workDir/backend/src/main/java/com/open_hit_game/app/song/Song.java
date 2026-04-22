@@ -1,4 +1,4 @@
-package model;
+package com.open_hit_game.app.song;
 
 public class Song {
 
@@ -9,7 +9,14 @@ public class Song {
     private String platform;
     private boolean played;
 
-    public Song(String title, String game, int year, String youtubeId, String platform, boolean played) {
+    public Song(
+        String title,
+        String game,
+        int year,
+        String youtubeId,
+        String platform,
+        boolean played
+    ) {
         this.title = title;
         this.game = game;
         this.year = year;
@@ -18,7 +25,6 @@ public class Song {
         this.played = played;
     }
 
-    // Getter
     public String getTitle() { return title; }
     public String getGame() { return game; }
     public int getYear() { return year; }

@@ -1,3 +1,3 @@
 /home/spring/src/main/java/com/open_hit_game/app/OpenHitGameApplication.java
-/home/spring/src/main/java/com/open_hit_game/app/controller/SongController.java
-/home/spring/src/main/java/model/Song.java
+/home/spring/src/main/java/com/open_hit_game/app/song/Song.java
+/home/spring/src/main/java/com/open_hit_game/app/song/SongController.java
