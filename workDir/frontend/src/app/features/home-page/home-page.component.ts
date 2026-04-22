@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'home-page',
+  selector: 'app-home-page',
   imports: [FormsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  playerName:string = '';
-
-  constructor(private router: Router) {}
+  playerName?:string = '';
+  private router: Router = Inject(Router);
 
   createLobby() {
     console.log("Create a lobby");
