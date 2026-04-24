@@ -20,7 +20,7 @@ export class HomePageComponent {
   }
 
   showRules() {
-    console.log("Show rules");
+    console.log("Show rules (future)");
     this.router.navigate(['/rules']);
   }
 }
