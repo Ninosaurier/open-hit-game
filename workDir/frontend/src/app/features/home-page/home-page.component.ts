@@ -1,25 +1,22 @@
 import { Component, Inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  playerName?:string = '';
+
   private router: Router = Inject(Router);
 
-  createLobby() {
-    console.log("Create a lobby");
-    //this.router.navigate(['/lobby/create']);
-  }
+  playerName = new FormControl('', [Validators.required, Validators.minLength(4)]);
 
-  joinLobby() {
-    console.log("Join a lobby");
-    //this.router.navigate(['/lobby/join']);
+  createLobby() {
+    console.log("Create a lobby with player name: " + this.playerName.value);
+    //this.router.navigate(['/lobby/create']);
   }
 
   showRules() {

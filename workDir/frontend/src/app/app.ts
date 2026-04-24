@@ -9,5 +9,5 @@ import { HomePageComponent } from './features/home-page/home-page.component';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  protected readonly title = signal('Open Hit Game');
 }

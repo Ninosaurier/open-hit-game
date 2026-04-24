@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageComponent } from './home-page.component';
+import { By } from '@angular/platform-browser';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -8,9 +9,8 @@ describe('HomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePageComponent]
-    })
-    .compileComponents();
+      imports: [HomePageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,28 @@ describe('HomePageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should disable buttons if fewer than 4 characters have been entered', () => {
+    component.playerNameControl.setValue('abc');
+    fixture.detectChanges();
+
+    const debugElements = fixture.debugElement.query(By.css('#create-lobby'));
+    const createBtn = debugElements.nativeElement;
+
+    expect(createBtn.disabled).toBeTruthy();
+  });
+
+  it('should activate buttons when more than 3 characters have been entered', () => {
+    // 1. Set value exactly 4 characters
+    component.playerNameControl.setValue('ImPlayerOne');
+    fixture.detectChanges();
+
+    // 2. Search buttons
+    const debugElements = fixture.debugElement.query(By.css('#create-lobby'));
+    const createBtn = debugElements.nativeElement;
+
+    // 3. Test
+    expect(createBtn.disabled).toBeFalsy();
   });
 });
