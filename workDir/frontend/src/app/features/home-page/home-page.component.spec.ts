@@ -22,7 +22,7 @@ describe('HomePageComponent', () => {
   });
 
   it('should disable buttons if fewer than 4 characters have been entered', () => {
-    component.playerNameControl.setValue('abc');
+    component.playerName.setValue('abc');
     fixture.detectChanges();
 
     const debugElements = fixture.debugElement.query(By.css('#create-lobby'));
@@ -33,7 +33,7 @@ describe('HomePageComponent', () => {
 
   it('should activate buttons when more than 3 characters have been entered', () => {
     // 1. Set value exactly 4 characters
-    component.playerNameControl.setValue('ImPlayerOne');
+    component.playerName.setValue('ImPlayerOne');
     fixture.detectChanges();
 
     // 2. Search buttons
