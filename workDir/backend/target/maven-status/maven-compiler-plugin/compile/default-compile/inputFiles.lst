@@ -1,3 +1,8 @@
 /home/spring/src/main/java/com/open_hit_game/app/OpenHitGameApplication.java
+/home/spring/src/main/java/com/open_hit_game/app/lobby/CreateLobbyRequest.java
+/home/spring/src/main/java/com/open_hit_game/app/lobby/Lobby.java
+/home/spring/src/main/java/com/open_hit_game/app/lobby/LobbyController.java
+/home/spring/src/main/java/com/open_hit_game/app/lobby/LobbyService.java
+/home/spring/src/main/java/com/open_hit_game/app/lobby/LobbyStatus.java
 /home/spring/src/main/java/com/open_hit_game/app/song/Song.java
 /home/spring/src/main/java/com/open_hit_game/app/song/SongController.java
