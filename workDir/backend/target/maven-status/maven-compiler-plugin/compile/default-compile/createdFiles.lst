@@ -3,6 +3,6 @@ com/open_hit_game/app/song/SongController.class
 com/open_hit_game/app/lobby/LobbyService.class
 com/open_hit_game/app/OpenHitGameApplication.class
 com/open_hit_game/app/lobby/LobbyController.class
+com/open_hit_game/app/lobby/dto/requests/v1/CreateLobbyRequestV1Dto.class
 com/open_hit_game/app/lobby/Lobby.class
 com/open_hit_game/app/song/Song.class
-com/open_hit_game/app/lobby/CreateLobbyRequest.class

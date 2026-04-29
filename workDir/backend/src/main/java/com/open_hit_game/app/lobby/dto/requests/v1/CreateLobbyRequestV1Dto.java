@@ -1,6 +1,6 @@
-package com.open_hit_game.app.lobby;
+package com.open_hit_game.app.lobby.dto.requests.v1;
 
-public class CreateLobbyRequest {
+public class CreateLobbyRequestV1Dto {
 
     private String playerName;
 

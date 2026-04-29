@@ -1,5 +1,6 @@
 package com.open_hit_game.app.lobby;
 
+import com.open_hit_game.app.lobby.dto.requests.v1.CreateLobbyRequestV1Dto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,8 @@ public class LobbyController {
     }
 
     @PostMapping
-    public Lobby create(@RequestBody CreateLobbyRequest request) {
+    public Lobby create(@RequestBody CreateLobbyRequestV1Dto
+ request) {
         return lobbyService.createLobby(request.getPlayerName());
     }
 
