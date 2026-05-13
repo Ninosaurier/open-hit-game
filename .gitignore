@@ -1,2 +1,7 @@
 .idea
 workDir/logs/angular_access.log
+workDir/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+workDir/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+workDir/backend/target/surefire-reports/com.open_hit_game.app.DemoApplicationTests.txt
+workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyControllerTest.txt
+workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyServiceTest.txt

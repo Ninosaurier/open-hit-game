@@ -16,7 +16,7 @@ services:
     build: spring
     container_name: spring
     tty: true
-    command: mvn spring-boot:run
+    command: mvn clean test spring-boot:run
     networks:
       - network_infrastructure
     volumes:

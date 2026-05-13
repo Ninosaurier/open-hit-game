@@ -14,12 +14,7 @@ public class LobbyController {
     }
 
     @PostMapping
-<<<<<<< HEAD
-    public Lobby create(@RequestBody CreateLobbyRequestV1Dto
- request) {
-=======
     public Lobby create(@RequestBody CreateLobbyRequestV1Dto request) {
->>>>>>> 4cd94de (Renaming and improving DTO class name)
         return lobbyService.createLobby(request.getPlayerName());
     }
 

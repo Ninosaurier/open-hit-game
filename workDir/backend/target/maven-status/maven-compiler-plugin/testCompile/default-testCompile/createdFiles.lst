@@ -1,1 +1,3 @@
 com/open_hit_game/app/DemoApplicationTests.class
+com/open_hit_game/app/lobby/LobbyControllerTest.class
+com/open_hit_game/app/lobby/LobbyServiceTest.class

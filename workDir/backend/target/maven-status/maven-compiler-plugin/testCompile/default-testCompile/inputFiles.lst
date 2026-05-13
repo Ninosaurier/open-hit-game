@@ -1,1 +1,3 @@
 /home/spring/src/test/java/com/open_hit_game/app/DemoApplicationTests.java
+/home/spring/src/test/java/com/open_hit_game/app/lobby/LobbyControllerTest.java
+/home/spring/src/test/java/com/open_hit_game/app/lobby/LobbyServiceTest.java
