@@ -10,9 +10,9 @@ class LobbyServiceTest {
 
     @Test
     void shouldCreateLobbySuccessfully() {
-        Lobby lobby = lobbyService.createLobby("Dennis");
+        Lobby lobby = lobbyService.createLobby("TestLobby");
 
         assertNotNull(lobby);
-        assertEquals("Dennis", lobby.getHostName());
+        assertEquals("TestLobby", lobby.getHostName());
     }
 }
