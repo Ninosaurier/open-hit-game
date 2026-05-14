@@ -15,14 +15,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(LobbyController.class)
-@AutoConfigureJsonTesters // Aktiviert die automatische Bereitstellung von JacksonTester
+@AutoConfigureJsonTesters
 class LobbyControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private JacksonTester<CreateLobbyRequestV1Dto> jsonTester; // Modern: Typisierte JSON-Generierung
+    private JacksonTester<CreateLobbyRequestV1Dto> jsonTester;
 
     @MockitoBean
     private LobbyService lobbyService;
