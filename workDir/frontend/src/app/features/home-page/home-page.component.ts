@@ -20,7 +20,7 @@ export class HomePageComponent {
 
   playerName = new FormControl('', [Validators.required, Validators.minLength(4)]);
 
-  createLobby() {
+  onCreateLobby() {
     const name = this.playerName.value;
 
     if (!name) {
