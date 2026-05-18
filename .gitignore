@@ -7,3 +7,37 @@ workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyControl
 workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyServiceTest.txt
 workDir/logs/angular_access.log
 workDir/tools/node_modules
+
+# IDEs
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+workDir/logs/
+
+# Frontend
+workDir/frontend/node_modules/
+workDir/frontend/dist/
+workDir/frontend/.angular/cache/
+workDir/frontend/coverage/
+
+# Backend (Maven)
+workDir/backend/target/
+workDir/backend/**/*.class
+
+# Tools
+workDir/tools/node_modules/
+workDir/tools/dist/
+
+# Generated files
+*.o
+*.so
+*.dylib
