@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LobbyService } from 'src/app/generated/api/lobby.service';
-import { CreateLobbyResponseV1Dto } from 'src/app/generated/model/createLobbyResponseV1Dto';
+import { Api } from '../../../core/api/api';
+import { createLobby } from '../../../core/api/fn/lobby/create-lobby';
+import { CreateLobbyResponseV1Dto } from '../../../core/api/models/create-lobby-response-v-1-dto';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +14,7 @@ import { CreateLobbyResponseV1Dto } from 'src/app/generated/model/createLobbyRes
 })
 export class HomePageComponent {
   private router = inject(Router);
-  private lobbyService = inject(LobbyService);
+  private api = inject(Api);
 
   errorMessage!: string;
 
@@ -26,26 +28,24 @@ export class HomePageComponent {
       return;
     }
 
-    this.lobbyService
-      .createLobby({
-        playerName: name,
-      })
-      .subscribe({
-        next: (response: CreateLobbyResponseV1Dto) => {
-          localStorage.setItem('playerName', name);
-          localStorage.setItem('lobbyCode', response.joinCode);
+    createLobby(this.api['http'], this.api.rootUrl, { body: { playerName: name } }).pipe(
+      map(response => response.body)
+    ).subscribe({
+      next: (response: CreateLobbyResponseV1Dto) => {
+        localStorage.setItem('playerName', name);
+        localStorage.setItem('lobbyCode', response.joinCode);
 
-          console.log('Lobby erstellt:', response.joinCode);
+        console.log('Lobby erstellt:', response.joinCode);
 
-          this.router.navigate(['/lobby', response.joinCode]);
-        },
+        //this.router.navigate(['/lobby', response.joinCode]);
+      },
 
-        error: (err: Error) => {
-          console.error(err);
+      error: (err: Error) => {
+        console.error(err);
 
-          this.errorMessage = err?.message + ' Can not create a room.';
-        },
-      });
+        this.errorMessage = err?.message + ' Can not create a room.';
+      },
+    });
   }
 
   showRules(): void {

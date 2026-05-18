@@ -6,8 +6,7 @@
     "paths": {}
   },
   "include": [
-    "src/**/*.ts",
-    "generated/**/*.ts" // Wichtig: Damit der Compiler den Ordner auch scannt!
+    "src/**/*.ts"
   ],
   "exclude": ["src/**/*.spec.ts"]
 }

@@ -1,0 +1,7 @@
+{
+  "input": "./open-hit-game-api.yaml",
+  "output": "../frontend/src/core/api",
+  "apiUrl": "/api",
+  "baseUrl": "/api",
+  "indexFile": true
+}
