@@ -1,20 +1,17 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-
-import { createApiConfiguration } from '../core/api-configuration';
+import { BASE_PATH } from '../core/api/variables';
 
 import { routes } from './app.routes';
-import { ApiConfiguration } from 'src/core/api/api-configuration';
+import { environment } from 'src/enviroments/environment';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(),
-    {
-      provide: ApiConfiguration,
-      useFactory: createApiConfiguration
-    }
+    { provide: BASE_PATH, useValue: environment.apiBasePath}
   ]
 };

@@ -1,0 +1,8 @@
+{
+  "generatorName": "typescript-angular",
+  "inputSpec": "./open-hit-game-api.yaml",
+  "outputDir": "../workDir/frontend/src/core/api",
+  "apiPackage": "api",
+  "modelPackage": "models",
+  "packageName": "open-hit-game-api"
+}

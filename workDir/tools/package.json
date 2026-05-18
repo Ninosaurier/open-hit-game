@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-api": "ng-openapi-gen --input ../openapi/open-hit-game-api.yaml -c ../openapi/ng-openapi-gen.json"
+    "generate-api": "openapi-generator-cli generate -i ../openapi/open-hit-game-api.yaml -g typescript-angular -o ../frontend/src/core/api"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.32.0",
-    "ng-openapi-gen": "^1.0.5"
+    "@openapitools/openapi-generator-cli": "^2.32.0"
   }
 }
