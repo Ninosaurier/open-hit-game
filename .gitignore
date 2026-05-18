@@ -6,3 +6,4 @@ workDir/backend/target/surefire-reports/com.open_hit_game.app.DemoApplicationTes
 workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyControllerTest.txt
 workDir/backend/target/surefire-reports/com.open_hit_game.app.lobby.LobbyServiceTest.txt
 workDir/logs/angular_access.log
+workDir/tools/node_modules
