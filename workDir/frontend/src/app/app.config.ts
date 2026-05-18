@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { BASE_PATH } from '../core/api/variables';
 
 import { routes } from './app.routes';
-import { environment } from 'src/enviroments/environment';
+import { environment } from '../environments/environment';
 
 
 export const appConfig: ApplicationConfig = {
