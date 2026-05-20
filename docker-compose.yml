@@ -21,6 +21,7 @@ services:
       - network_infrastructure
     volumes:
       - ./workDir/backend:/home/spring/:cached
+      - ./workDir/openapi/:/home/spring/src/main/resources/:cached
       - ./workDir/logs/:/var/log/nginx/:cached
     ports:
       - "8080:8080"

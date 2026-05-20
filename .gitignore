@@ -41,3 +41,4 @@ workDir/tools/dist/
 *.o
 *.so
 *.dylib
+workDir/backend/target/*

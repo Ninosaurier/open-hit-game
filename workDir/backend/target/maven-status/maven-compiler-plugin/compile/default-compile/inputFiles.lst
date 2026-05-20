@@ -6,3 +6,7 @@
 /home/spring/src/main/java/com/open_hit_game/app/lobby/dto/requests/v1/CreateLobbyRequestV1Dto.java
 /home/spring/src/main/java/com/open_hit_game/app/song/Song.java
 /home/spring/src/main/java/com/open_hit_game/app/song/SongController.java
+/home/spring/target/generated-sources/openapi/src/main/java/com/open_hit_game/generated/api/ApiUtil.java
+/home/spring/target/generated-sources/openapi/src/main/java/com/open_hit_game/generated/api/LobbyApi.java
+/home/spring/target/generated-sources/openapi/src/main/java/com/open_hit_game/generated/model/CreateLobbyRequestV1Dto.java
+/home/spring/target/generated-sources/openapi/src/main/java/com/open_hit_game/generated/model/CreateLobbyResponseV1Dto.java
