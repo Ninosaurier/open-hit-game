@@ -1,14 +1,11 @@
 package com.open_hit_game.app.lobby;
 
-import com.open_hit_game.generated.api.LobbyApi;
-import com.open_hit_game.generated.model.CreateLobbyRequestV1Dto;
-import com.open_hit_game.generated.model.CreateLobbyResponseV1Dto;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import com.open_hit_game.app.lobby.dto.requests.v1.CreateLobbyRequestV1Dto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class LobbyController implements LobbyApi {
+@RequestMapping("/api/lobbies")
+public class LobbyController {
 
     private final LobbyService lobbyService;
 
@@ -16,20 +13,13 @@ public class LobbyController implements LobbyApi {
         this.lobbyService = lobbyService;
     }
 
-    @Override
-    public ResponseEntity<CreateLobbyResponseV1Dto> createLobby(
-            CreateLobbyRequestV1Dto request
-    ) {
+    @PostMapping
+    public Lobby create(@RequestBody CreateLobbyRequestV1Dto request) {
+        return lobbyService.createLobby(request.getPlayerName());
+    }
 
-        Lobby lobby = lobbyService.createLobby(
-                request.getPlayerName()
-        );
-
-        CreateLobbyResponseV1Dto response =
-                new CreateLobbyResponseV1Dto();
-
-        response.setJoinCode(lobby.getJoinCode());
-
-        return ResponseEntity.ok(response);
+    @GetMapping("/{code}")
+    public Lobby getLobby(@PathVariable String code) {
+        return lobbyService.getByCode(code);
     }
 }
