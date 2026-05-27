@@ -11,12 +11,15 @@ import { CreateLobbyResponseV1Dto } from '../../../core/api/model/createLobbyRes
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  private router = inject(Router);
-  private lobbyService = inject(LobbyService);
+  private router: Router = inject(Router);
+  private lobbyService: LobbyService = inject(LobbyService);
 
   errorMessage!: string;
 
-  playerName = new FormControl('', [Validators.required, Validators.minLength(4)]);
+  /**
+    Stores the name of the player
+  */
+  playerName: FormControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
 
   onCreateLobby() {
     const name = this.playerName.value;
