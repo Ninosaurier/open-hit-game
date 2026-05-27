@@ -7,6 +7,7 @@ services:
       - ./workDir/frontend:/var/www/frontend/:cached
     ports:
       - "4200:4200"
+      - "1234:1234" # compodoc documenation port
     environment:
       - CHOKIDAR_USEPOLLING=true
     networks:
