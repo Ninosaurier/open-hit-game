@@ -2283,3 +2283,5 @@
 172.18.0.1 - - [27/May/2026:11:23:19 +0000] "GET /@fs/var/www/frontend/node_modules/vite/dist/client/env.mjs HTTP/1.1" 304 0 "http://angular.localhost/@vite/client" "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
 172.18.0.1 - - [27/May/2026:11:23:19 +0000] "GET /?token=OhDblyl8Jxyz HTTP/1.1" 200 291 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
 172.18.0.1 - - [27/May/2026:11:23:19 +0000] "GET /@fs/var/www/frontend/.angular/cache/21.2.7/frontend/vite/deps/chunk-KP6T25IZ.js.map HTTP/1.1" 304 0 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
+172.18.0.1 - - [27/May/2026:11:44:59 +0000] "GET /@fs/var/www/frontend/.angular/cache/21.2.7/frontend/vite/deps/chunk-KP6T25IZ.js.map HTTP/1.1" 304 0 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
+172.18.0.1 - - [27/May/2026:11:45:03 +0000] "POST /api/lobbies HTTP/1.1" 200 175 "http://angular.localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
