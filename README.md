@@ -27,7 +27,11 @@ You are welcome to clone the repo and run it in Windows. I will gladly extend th
 `docker compose build`.
 
 ### 1.4 Start the containers
-But before you start the containers, the line "command: ng serve frontend --host 0.0.0.0 --port 4200" in the _docker-compose.yml_, is commented out. This is **important for the beginning**, otherwise the _Angular container_ will *not start*!
+But before you start the containers, the line:
+```json
+ng serve frontend --host 0.0.0.0 --port 4200 --no-hmr
+```
+in the _docker-compose.yml_, is commented out. This is **important for the beginning**, otherwise the _Angular container_ will *not start*!
 The command will start the Angular project, but will immediately print an error message, because there is no _package.json_. Therefore we have to comment out the line first.
 Start the container: `docker compose up -d`.
 
@@ -43,13 +47,6 @@ open-hit-game_spring       0.0.0.0:8080->8080/tcp, :::8080->8080/tcp    spring
 postgres:alpine            0.0.0.0:5432->5432/tcp, :::5432->5432/tcp    postgres_database
 ```
 
-### 1.5 Initialize the Angular project.
-The recommended working directory is **/var/www/frontend** of the Angular container.
-Now, create the Angular project with following command:
-- `docker exec -it angular sh /usr/share/scripts/initAngularProject.sh`
-
-The working directory is declared as **:cached**, so you will find (after restarting all container in chapter 1.7) the new initialized project in **./workdir/frontend/**.
-
 Afterwards, please add following configuration in the angular.json:
 ```json
 {
@@ -60,47 +57,47 @@ Afterwards, please add following configuration in the angular.json:
   }
 }
 ```
+This allows you, to reach the containers with URL via `http://angular.localhost`.
 
-### 1.6 Get the Spring boot application
-1. Go to [Spring initializr](https://start.spring.io/).
-2. Set the project on **Maven** and language on **Java**
-3. Choose your Spring boot version
-4. Change the project metadata or take the example data
-5. Choose a Java version (Be careful! You need the same version like in the dockerfile in the folder spring!)
-6. Go to dependencies and add:
-    - Spring Boot DevTools
-    - Spring Web
-    - Lombock
-7. Generate and download it
-8. Unzip the file
-9. Copy all files in the folder in the project **workDir/backend/**
+### 1.6 Install dependencies in the frontend
+Install the NPM packages:
+```bash
+docker exec -it npm run install
+```
+Afterwards activate the line in the docker-compose.yaml:
+```json
+ng serve frontend --host 0.0.0.0 --port 4200 --no-hmr
+```
+An restart the container
 
-### 1.7 Start the containers
-Start the containers with `docker compose up -d`.
-
-### 1.8 Try it!
+### 1.7 Try it!
 Open your browser and make sure everything worked.
 The Angular container can be accessed via the URL `http://angular.localhost` and the Spring container via `http://spring.localhost`.
 
-### Nginx logs
+### 1.8 Generating with OpenAPI
+Command for generating the OpenAPI:
+```bash
+docker exec -it angular npx @openapitools/openapi-generator-cli generate   -i ../openapi/open-hit-game-api.yaml   -g typescript-angular   -o ../frontend/src/app/generated --additional-properties=basePath='',providedInRoot=true
+```
+
+## 2 Documentation
+I use compodoc and inline documentation. Extern documentation only for complex structure. To see it run:
+```bash
+docker exec -it angular npm run compodoc
+```
+
+## 3 Nginx logs
 The logs are cached and you will find them in project folder _workDir/logs_.
 
-## Useful Commands
+## 4 Useful Commands
 
 - Shows all running containers: `docker ps`
 - If you want to use the shell from the container itself: `docker exec -it <container_name> sh`
 
-## FAQ
+## 5 FAQ
 
-#### How can i change the user ownership? I can not edit files.
+### 5.1 How can i change the user ownership? I can not edit files.
 - Command: `sudo chown -R $USER ./workDir/*`.
 
-#### How can I change the working directory of a Docker container?
+### 5.2 How can I change the working directory of a Docker container?
 - Please make yourself familiar with the commands of [Docker](https://docs.docker.com/compose/). Use the respective "Dockerfile" for changes. But be careful! If you change the working directory, then you must also do it in the respective configuration files of the Nginx. The **angular.conf** contains the working directory where Nginx will look for the Angular project!
-
-
-# License
-Legally, I don't know if I can declare the repo with a GPL3 license.
-
-But definitely feel free to copy, modify or even improve the repo.
-I have one request: If you have any improvements, please let me know. Would love to include them too :)
