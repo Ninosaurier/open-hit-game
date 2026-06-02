@@ -9,6 +9,7 @@ import java.util.Random;
 @Service
 public class LobbyService {
 
+    private final int LOBBY_CODE_LENGTH = 6;
     private final Map<String, Lobby> lobbies = new ConcurrentHashMap<>();
 
 
@@ -30,7 +31,7 @@ public class LobbyService {
         String code;
         do {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < LOBBY_CODE_LENGTH; i++) {
                 sb.append(chars.charAt(random.nextInt(chars.length())));
             }
             code = sb.toString();
