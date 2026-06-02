@@ -2,6 +2,9 @@ package com.open_hit_game.app.lobby;
 
 import com.open_hit_game.app.lobby.dto.requests.v1.CreateLobbyRequestV1Dto;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/lobbies")
@@ -20,6 +23,13 @@ public class LobbyController {
 
     @GetMapping("/{code}")
     public Lobby getLobby(@PathVariable String code) {
-        return lobbyService.getByCode(code);
+
+        Lobby lobby = lobbyService.getByCode(code);
+        
+        if (lobby == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lobby nicht gefunden");
+        }
+        
+        return lobby;
     }
 }

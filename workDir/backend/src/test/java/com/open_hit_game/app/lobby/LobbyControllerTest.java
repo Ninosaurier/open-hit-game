@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.Mockito.when;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -45,5 +46,15 @@ class LobbyControllerTest {
                     """))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.joinCode").value("AB12CD"));
+    }
+
+    @Test
+    void shouldReturn404WhenLobbyDoesNotExist() throws Exception
+    {
+        when(lobbyService.getByCode("FAIL123")).thenReturn(null);
+
+        mockMvc.perform(get("/lobby/FAIL123")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }
