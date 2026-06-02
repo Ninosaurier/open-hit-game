@@ -3,6 +3,7 @@ import { FormsModule, FormControl, Validators, ReactiveFormsModule } from '@angu
 import { Router } from '@angular/router';
 import { LobbyService } from '../../../core/api/api/lobby.service';
 import { CreateLobbyResponseV1Dto } from '../../../core/api/model/createLobbyResponseV1Dto';
+import {LoggingService} from '../../core/services/logging/logging-service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,6 +14,7 @@ import { CreateLobbyResponseV1Dto } from '../../../core/api/model/createLobbyRes
 export class HomePageComponent {
   private router: Router = inject(Router);
   private lobbyService: LobbyService = inject(LobbyService);
+  private loggingService: LoggingService = inject(LoggingService);
 
   errorMessage!: string;
 
@@ -34,18 +36,19 @@ export class HomePageComponent {
         localStorage.setItem('playerName', name);
         localStorage.setItem('lobbyCode', response.joinCode);
 
+        this.loggingService.log('Lobby successfully created! Joincode is ', response.joinCode);
         this.router.navigate(['/lobby', response.joinCode]);
       },
 
       error: (err: Error) => {
-        console.error(err);
+        this.loggingService.error(err.message, err);
         this.errorMessage = err?.message + ' Can not create a room.';
       },
     });
   }
 
   showRules(): void {
-    console.log('Show rules (future)');
+    this.loggingService.log('Not implemented');
     this.router.navigate(['/rules']);
   }
 }
