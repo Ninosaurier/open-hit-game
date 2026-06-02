@@ -3,7 +3,7 @@ import { FormsModule, FormControl, Validators, ReactiveFormsModule } from '@angu
 import { Router } from '@angular/router';
 import { LobbyService } from '../../../core/api/api/lobby.service';
 import { CreateLobbyResponseV1Dto } from '../../../core/api/model/createLobbyResponseV1Dto';
-import {LoggingService} from '../../core/services/logging/logging-service';
+import { LoggingService } from '../../core/services/logging/logging-service';
 
 @Component({
   selector: 'app-home-page',
