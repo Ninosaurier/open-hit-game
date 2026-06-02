@@ -2,14 +2,15 @@ package com.open_hit_game.app.lobby;
 
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.Random;
 
 @Service
 public class LobbyService {
 
-    private final Map<String, Lobby> lobbies = new HashMap<>();
+    private final Map<String, Lobby> lobbies = new ConcurrentHashMap<>();
+
 
     public Lobby createLobby(String hostName) {
         String code = generateCode();
