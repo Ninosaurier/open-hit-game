@@ -34,9 +34,7 @@ export class HomePageComponent {
         localStorage.setItem('playerName', name);
         localStorage.setItem('lobbyCode', response.joinCode);
 
-        console.log('Lobby erstellt:', response.joinCode);
-
-        //this.router.navigate(['/lobby', response.joinCode]);
+        this.router.navigate(['/lobby', response.joinCode]);
       },
 
       error: (err: Error) => {
