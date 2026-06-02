@@ -57,4 +57,30 @@ class LobbyControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void shouldReturn400WhenPlayerNameIsBlank() throws Exception {
+
+        mockMvc.perform(post("/api/lobbies")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "playerName": ""
+                    }
+                    """))
+                .andExpect(status().isBadRequest()); 
+    }
+
+    @Test
+    void shouldReturn400WhenPlayerNameContainsOnlySpaces() throws Exception {
+
+        mockMvc.perform(post("/api/lobbies")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "playerName": "   "
+                    }
+                    """))
+                .andExpect(status().isBadRequest()); 
+    }
 }

@@ -6,8 +6,13 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
+
+
 @RestController
 @RequestMapping("/api/lobbies")
+@Validated
 public class LobbyController {
 
     private final LobbyService lobbyService;
@@ -17,7 +22,7 @@ public class LobbyController {
     }
 
     @PostMapping
-    public Lobby create(@RequestBody CreateLobbyRequestV1Dto request) {
+    public Lobby create(@Valid @RequestBody CreateLobbyRequestV1Dto request) {
         return lobbyService.createLobby(request.getPlayerName());
     }
 
@@ -27,7 +32,7 @@ public class LobbyController {
         Lobby lobby = lobbyService.getByCode(code);
         
         if (lobby == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lobby nicht gefunden");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lobby not found.");
         }
         
         return lobby;
