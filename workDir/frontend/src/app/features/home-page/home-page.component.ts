@@ -33,8 +33,6 @@ export class HomePageComponent {
 
     this.lobbyService.createLobby({ playerName: name }).subscribe({
       next: (response: CreateLobbyResponseV1Dto) => {
-        localStorage.setItem('playerName', name);
-        localStorage.setItem('lobbyCode', response.joinCode);
 
         this.loggingService.log('Lobby successfully created! Joincode is ', response.joinCode);
         this.router.navigate(['/lobby', response.joinCode]);
